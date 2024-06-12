@@ -3,10 +3,12 @@ import { IoCard } from "react-icons/io5";
 import { FaRegEdit } from "react-icons/fa";
 import { useContext } from "react";
 import { ProfileContext } from "./EveryThing";
+import { useDispatch  } from "react-redux";
+import { Cardlist} from '../Redux/reducer'
 
 export default function AddCard() {
   const {
-    AddCard,
+    // AddCard,
     name,
     setname,
     number,
@@ -43,6 +45,18 @@ export default function AddCard() {
       setcartCash(newValue);
     }
   };
+const dispatch = useDispatch()
+  const AddCard = () => {
+    dispatch(Cardlist(name,number,password,year,month,inventory ,cvv2))
+
+    setname("")
+    setnumber("")
+    setcvv2("")
+    setyear("")
+  setmonth("")
+  setpassword("")
+   setinventory("")
+  }
 
   return (
     <div className="container">
