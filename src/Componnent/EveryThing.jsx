@@ -8,34 +8,28 @@ import Card from "./Card";
 import Navbar from "./Navbar";
 import { setImageCart, resetImageBank } from "../Redux/bankSlice";
 
-
 export const ProfileContext = createContext();
 
 function EveryThing() {
-  // const [name, setname] = useState("");
-  // const [number, setnumber] = useState("");
-  // const [cvv2, setcvv2] = useState("");
-  // const [year, setyear] = useState("");
-  // const [month, setmonth] = useState("");
-  // const [password, setpassword] = useState("");
-  // const [inventory, setinventory] = useState("");
-  // // const [list, setlist] = useState([]);
-  const [idCart , setidCart]= useState("")
-
-  const [nameCart, setnameCart] = useState("");
-  const [numberCart, setnumberCart] = useState("");
-  const [cvv2Cart, setcvv2Cart] = useState("");
-  const [yearCart, setyearCart] = useState("");
-  const [monthCart, setmonthCart] = useState("");
-  const [passwordCart, setpasswordCart] = useState("");
+  const [nameCard, setnameCard] = useState("");
+  const [numberCard, setnumberCard] = useState("");
+  const [cvv2Card, setcvv2Card] = useState("");
+  const [yearCard, setyearCard] = useState("");
+  const [monthCard, setmonthCard] = useState("");
+  const [passwordCard, setpasswordCard] = useState("");
   const [cartCash, setcartCash] = useState(null);
+  const [idCard , setidCard]= useState("")
   // const [historyList , sethistoryList] = useState([])
 
   const dispatch = useDispatch();
+
   const imgBank = useSelector((state) => state.Bank.ImgBank);
-  const { list, historyList} = useSelector(
-    (state) => state.card
-  );
+  const { list, historyList } = useSelector((state) => state.card);
+
+
+  
+
+
 
   const SelectCard = (event) => {
     const foundedCard =list.map((card)=>{
@@ -44,48 +38,16 @@ function EveryThing() {
     console.log(foundedCard)
 
     if(foundedCard){
-      setnumberCart(event.number),
-      setcvv2Cart(event.cvv),
-      setpasswordCart(event.password),
-      setnameCart(event.name),
-      setmonthCart(event.month),
-      setyearCart(event.year)
-      setidCart(event.id)
+      setnumberCard(event.number),
+      setcvv2Card(event.cvv2),
+      setpasswordCard(event.password),
+      setnameCard(event.name),
+      setmonthCard(event.month),
+      setyearCard(event.year)
+      setidCard(event.id)
     }
 
   }
-
-  // const SelectCard = (event) => {
-  //   const foundedCard = list.find((card) => card.id === event.id);
-
-  //   if (foundedCard) {
-  //     dispatch(selectCard(foundedCard));
-  //   }
-  // };
-
-  // const AddCard =(name,number,password,cvv,year,month,inventory)=>{
-  // const NewCard ={
-  //   id:list.length + 1 ,
-  //   name,
-  //   number,
-  //   password,
-  //   cvv,
-  //   year,
-  //   month,
-  //   inventory
-  // }
-  // console.log(NewCard)
-  // setlist([...list,NewCard])
-
-  // setname("")
-  // setnumber("")
-  // setcvv2("")
-  // setyear("")
-  // setmonth("")
-  // setpassword("")
-  // setinventory("")
-
-  // }
 
   // const negetiveInventory = (negetivePrice , id) => {
   //   const newCash = list.map((card)=>{
@@ -106,9 +68,7 @@ function EveryThing() {
   //   setlist(newCash);
   //   }
 
-  const negetiveInventory = (negetivePrice, id) => {
-    dispatch(updateInventory({ id, amount: negetivePrice }));
-  };
+  
 
   const bankImage = (e) => {
     const value = e.target.value.slice(0, 4);
@@ -261,53 +221,49 @@ function EveryThing() {
     }
   };
 
-  
-
   return (
     <ProfileContext.Provider
-      value={
-        {
-          // setname,
-          // number,
-          // setnumber,
-          // cvv2,
-          // setcvv2,
-          // year,
-          // setyear,
-          // month,
-          // setmonth,
-          // password,
-          // setpassword,
-          // inventory,
-          // setinventory,
-          // list,
-          // setlist,
-          // idCart,
-          setidCart,
-          nameCart,
-          setnameCart,
-          numberCart,
-          setnumberCart,
-          cvv2Cart,
-          setcvv2Cart,
-          yearCart,
-          setyearCart,
-          monthCart,
-          setmonthCart,
-          passwordCart,
-          setpasswordCart,
-          cartCash,
-          setcartCash,
-          negetiveInventory
-          // historyList,
-          // sethistoryList,
-          // SelectCard,
-          // AddCard,
-          // negetiveInventory
-          // ,bankImage,
-          // imgBank,
-        }
-      }
+      value={{
+        // setname,
+        // number,
+        // setnumber,
+        // cvv2,
+        // setcvv2,
+        // year,
+        // setyear,
+        // month,
+        // setmonth,
+        // password,
+        // setpassword,
+        // inventory,
+        // setinventory,
+        // list,
+        // setlist,
+        idCard,
+        setidCard,
+        nameCard,
+        setnameCard,
+        numberCard,
+        setnumberCard,
+        cvv2Card,
+        setcvv2Card,
+        yearCard,
+        setyearCard,
+        monthCard,
+        setmonthCard,
+        passwordCard,
+        setpasswordCard,
+        cartCash,
+        setcartCash,
+        // negetiveInventory,
+        // historyList,
+        // sethistoryList,
+        // SelectCard,
+        // AddCard,
+        // negetiveInventory,
+        bankImage,
+        imgBank,
+      }}
     >
       <div>
         <Navbar />
@@ -322,12 +278,7 @@ function EveryThing() {
             path="/Transaction"
             element={
               <Transaction
-                // Number={selectedCard.number}
-                // name={selectedCard.name}
-                // Cvv2={selectedCard.cvv2}
-                // Year={selectedCard.year}
-                // Month={selectedCard.month}
-                // Inventory={selectedCard.inventory}
+              
               />
             }
           />
@@ -342,7 +293,7 @@ function EveryThing() {
                 name={item.name}
                 Number={item.number}
                 Password={item.password}
-                Cvv2={item.cvv}
+                Cvv2={item.cvv2}
                 Year={item.year}
                 Month={item.month}
                 Inventory={item.inventory}

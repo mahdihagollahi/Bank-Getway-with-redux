@@ -6,16 +6,18 @@ const initialState = {
     list : [],
     historyList : [],
     selectedCard : {},
-   
-    // cartCash: null,
-//   idCart: "",
-//     nameCard : '',
-//     numberCard : '',
-//     cvv2Card : '',
-//     yearCard : '',
-//     monthCard: '',
-//     passwordCard: '',
-//     cardCash: null
+   nameCard : '',
+   numberCard : '',
+   yearCard : '',
+   monthCard : '',
+   cardCash : '',
+   idCard : '',
+
+
+cvv2Card: '',
+
+passwordCart: '',
+
 }
 
 
@@ -31,16 +33,19 @@ const cardSlice = createSlice({
             })
         },
 
-       
+        setCardDetails : (state , action ) => {
+            return{...state , ...action.payload}
+        }
 
         // selectCard: (state, action) => {
         //     state.selectedCard = action.payload;
         // },
+       
 
        },
 })
 
-export const {addCard} = cardSlice.actions
+export const {addCard ,setCardDetails} = cardSlice.actions
 export default cardSlice.reducer
 
 

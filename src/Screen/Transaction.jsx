@@ -7,25 +7,30 @@ import { ProfileContext } from "../Componnent/EveryThing";
 
 export default function Card() {
 
-  const {list ,cartCash,setcartCash ,nameCart,
-    setnameCart,
-    setnumberCart,
-    numberCart,
-    Cvv2Cart,
-    setCvv2Cart,
-    yearCart,
-    monthCart,
-    setmonthCart,
-    passwordCart,
-    setpasswordCart,
-    setyearCart, 
+  const {list ,cartCash,setcartCash ,nameCard,
+    setnameCard,
+    setnumberCard,
+    numberCard,
+    cvv2Card,
+    setCvv2Card,
+    yearCard,
+    monthCard,
+    setmonthCard,
+    passwordCard,
+    setpasswordCard,
+    setyearCard, 
     negetiveInventory,
     History,
     idCart,
+    bankImage,
+    imgBank,
     
    
     setHistory,
     } = useContext(ProfileContext)
+
+
+  
 
 
   const disableNumberDefult = (e) => {
@@ -78,8 +83,12 @@ export default function Card() {
           <div className="my-5 -ml-[60px]">
             <input
               style={{ color: "black" }}
-              value={numberCart}
-              onChange={(e) =>setnumberCart(e.target.value)}
+              value={numberCard}
+              onChange={(e) =>{
+                bankImage(e);
+                setnumberCard(e.target.value)}
+               
+              }
               className=" text-black bg-gray-100 text-center mr-[170px]
                border border-gray-100  text-sm rounded-lg focus:ring-blue-500
                 focus:border-blue-500 ml-[100px] block w-[81%] p-2.5 
@@ -90,6 +99,9 @@ export default function Card() {
               required
               disabled
             />
+              {imgBank && (
+                <img className="w-[5%] absolute top-[2%] left-[6%]" src={imgBank} alt="Bank Logo" />
+              )}
           </div>
 
           <div className="flex mt-10 text-right text-black">
@@ -103,8 +115,8 @@ export default function Card() {
             <div className="ml-20 mt-3">
               <input
                 style={{ color: "black" }}
-                value={Cvv2Cart}
-                onChange={(e) => setCvv2Cart(e.target.value)}
+                value={cvv2Card}
+                onChange={(e) => setcvv2Card(e.target.value)}
                 placeholder="5643"
                 type="password"
               
@@ -127,8 +139,8 @@ export default function Card() {
             <div className="flex gap-2 ml-28 text-black">
               <input
                 style={{ color: "black" }}
-                value={yearCart} 
-                onChange={(e) => setyearCart(e.target.value)}
+                value={yearCard} 
+                onChange={(e) => setyearCard(e.target.value)}
                 placeholder="Y"
                 type="text"
                 disabled
@@ -137,8 +149,8 @@ export default function Card() {
               <span className="mt-2 text-bold ">/</span>
               <input
                 style={{ color: "black" }}
-                value={monthCart}
-                onChange={(e) => setmonthCart(e.target.value)}
+                value={monthCard}
+                onChange={(e) => setmonthCard(e.target.value)}
                 placeholder="M"
                 type="text"
                 disabled
@@ -158,9 +170,9 @@ export default function Card() {
             <div className="flex gap-2 ml-[113px]">
               <input
                 style={{ color: "black" }}
-                value={passwordCart}
+                value={passwordCard}
                 disabled
-                onChange={(e) => setpasswordCart(e.target.value)}
+                onChange={(e) => setpasswordCard(e.target.value)}
                 placeholder="xxxx"
                 type="password"
                 className=" text-center text-black bg-white px-[115px] py-3  dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block"
@@ -176,9 +188,9 @@ export default function Card() {
               <input
                 style={{ color: "black" }}
                 placeholder="Mahdi"
-                value={nameCart}
+                value={nameCard}
                 disabled
-                onChange={(e) => setnameCart(e.target.value)}
+                onChange={(e) => setnameCard(e.target.value)}
                 type="text"
                 className=" text-center text-black bg-white px-[115px] py-3  dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block"
               />
