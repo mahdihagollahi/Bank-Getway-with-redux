@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import Bankreducer from './reducer'
+import Bankreducer from './bankSlice'
+import cardSlice from "./cardSlice";
+
 const store = configureStore({
     reducer:{
-        Bank : Bankreducer
+        Bank : Bankreducer,
+        card : cardSlice
     }
 })
 

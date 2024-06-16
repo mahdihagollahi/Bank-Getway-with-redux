@@ -1,12 +1,26 @@
 import React from 'react'
 
+// import { useSelector, useDispatch } from 'react-redux';
+// import { selectCard } from '../Redux/cardSlice';
 
 
-export default function Card({name,Number,Password,Cvv2,Year,Month,Inventory,SelectCard,imgBank
- }) {
+export default function Card({name,Number,Password,Cvv2,Year,Month,Inventory,imgBank,list,SelectCard}) {
+
+  
+  // const dispatch = useDispatch();
+  
+  
+ 
+  // const handleSelectCard = (card) => {
+  //     dispatch(selectCard(card));
+  // };
+  
+
+
+  
   return (
     <div  style={{ display: "flex" }} className="w-96 h-56 mb-12  m-auto bg-white rounded-xl relative text-black shadow-2xl transition-transform transform hover:scale-110 hover:shadow-md hover:border-[#fafa]">
-            <div onClick={SelectCard}  className="  w-full px-8 absolute top-8 ">
+            <div onClick={ SelectCard} className="  w-full px-8 absolute top-8 ">
               <div className="flex justify-between">
                 <div className="">
                    <p className="font-light">Name</p>
