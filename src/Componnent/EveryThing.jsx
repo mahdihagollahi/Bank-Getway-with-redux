@@ -7,6 +7,7 @@ import InputCard from "./AddCart";
 import Card from "./Card";
 import Navbar from "./Navbar";
 import { setImageCart, resetImageBank } from "../Redux/bankSlice";
+import { negetiveInventory } from '../Redux/cardSlice';
 
 export const ProfileContext = createContext();
 
@@ -19,13 +20,13 @@ function EveryThing() {
   const [passwordCard, setpasswordCard] = useState("");
   const [cartCash, setcartCash] = useState(null);
   const [idCard , setidCard]= useState("")
-  // const [historyList , sethistoryList] = useState([])
+  const [historyList , sethistoryList] = useState([])
 
   const dispatch = useDispatch();
 
   const imgBank = useSelector((state) => state.Bank.ImgBank);
-  const { list, historyList } = useSelector((state) => state.card);
-
+  const { list } = useSelector((state) => state.card);
+  // const {historyList} = useSelector((state => state.card.historyList))
 
   
 
@@ -49,26 +50,10 @@ function EveryThing() {
 
   }
 
-  // const negetiveInventory = (negetivePrice , id) => {
-  //   const newCash = list.map((card)=>{
-  //     return card.id === id && card.inventory >= negetivePrice
-  //     ?{...card , inventory: card.inventory - negetivePrice}
-  //     :card;
-  //   });
-
-  //   newCash.map((item)=>{
-  //     if(item.id === id){
-  //       const Historycal ={...item , p:negetivePrice};
-  //       sethistoryList([...historyList , Historycal])
-  //       console.log(historyList)
-
-  //     }
-  //   })
-
-  //   setlist(newCash);
-  //   }
-
-  
+  const handelNegetive = (negetivePrice , id) => {
+    dispatch(negetiveInventory({negetivePrice , id}))
+  }
+ 
 
   const bankImage = (e) => {
     const value = e.target.value.slice(0, 4);
@@ -261,6 +246,7 @@ function EveryThing() {
         // SelectCard,
         // AddCard,
         // negetiveInventory,
+        handelNegetive,
         bankImage,
         imgBank,
       }}

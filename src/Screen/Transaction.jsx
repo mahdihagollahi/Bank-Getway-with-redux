@@ -7,7 +7,7 @@ import { ProfileContext } from "../Componnent/EveryThing";
 
 export default function Card() {
 
-  const {list ,cartCash,setcartCash ,nameCard,
+  const {cartCash,setcartCash ,nameCard,
     setnameCard,
     setnumberCard,
     numberCard,
@@ -19,15 +19,12 @@ export default function Card() {
     passwordCard,
     setpasswordCard,
     setyearCard, 
-    negetiveInventory,
-    History,
-    idCart,
+    handelNegetive,
     bankImage,
     imgBank,
-    
-   
-    setHistory,
     } = useContext(ProfileContext)
+
+
 
 
   
@@ -74,7 +71,7 @@ export default function Card() {
             </p>
           </div>
           <a className="flex  justify-between text-black ml-[30px]">
-          <FaRegEdit className="mt-1 text-blue-500 mr-2" />
+          <FaRegEdit className="mt-1 text-blue-500 mr-2  -ml-[20px]" />
             <p>Edit</p>
           </a>
         </div>
@@ -116,7 +113,7 @@ export default function Card() {
               <input
                 style={{ color: "black" }}
                 value={cvv2Card}
-                onChange={(e) => setcvv2Card(e.target.value)}
+                onChange={(e) => setCvv2Card(e.target.value)}
                 placeholder="5643"
                 type="password"
               
@@ -228,7 +225,8 @@ export default function Card() {
           <div className="mt-10">
             <button
              onClick={
-             ()=>negetiveInventory(cartCash , idCart)
+          
+           () => handelNegetive (cartCash , 1)
             }
               href=""
             type="button"

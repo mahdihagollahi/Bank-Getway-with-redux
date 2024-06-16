@@ -221,7 +221,7 @@ export default function AddCard() {
               <h2 className="text-bold text-lg mr-[143px]">CardNumber</h2>
               <p className="text-xs opacity-50">Enter the 16-digit card number on the Card</p>
             </div>
-            <a className="flex cursor-pointer justify-between text-black ml-[30px]">
+            <a className="flex cursor-pointer justify-between text-black ml-[10px]">
               <FaRegEdit className="mt-1 text-blue-500 mr-2" />
               <p>Edit</p>
             </a>
@@ -269,9 +269,12 @@ export default function AddCard() {
               </div>
             </div>
             <div className="flex mt-10 text-right text-black">
-              <div className="ml-[40px]">
-                <h2 className="text-bold text-lg mr-[111px]">Expiry Date</h2>
-                <p className="text-xs opacity-50 dark:border-gray-200 mr-[43px]">Enter the expiration date on the card</p>
+            <div className="ml-[40px]">
+            <h2 className="text-bold text-lg mr-[111px]">Expiry Date</h2>
+            <p className="text-xs opacity-50 dark:border-gray-200 mr-[43px]">
+            {" "}
+                Enter the expiration the card{" "}
+              </p>
               </div>
               <div className="flex gap-2 ml-28 text-black">
                 <input
@@ -380,7 +383,7 @@ export default function AddCard() {
                   
                 }
                 className="text-blue-700 w-9/12 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-80 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800"
-              >Add Card</button>
+              >AddCard</button>
             </div>
           </div>
         </div>
