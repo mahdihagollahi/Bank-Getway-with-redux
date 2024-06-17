@@ -1,6 +1,12 @@
 import React from 'react'
 import HistoryCard from '../Componnent/HistoryCart';
-export default function History({historyList}) {
+import {  useSelector } from "react-redux";
+
+
+export default function History() {
+const {historyList} = useSelector((state => state.card))
+
+ 
   return (
     <div className='p-24 '>
       <div className=' mb-9  w-[69%] h-auto ml-60 text-center mr-96  align-center justify-center mt-2  text-white p-10 px-10 border-solid border-2 rounded-2xl bg-white'>

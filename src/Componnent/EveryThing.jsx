@@ -20,13 +20,13 @@ function EveryThing() {
   const [passwordCard, setpasswordCard] = useState("");
   const [cartCash, setcartCash] = useState(null);
   const [idCard , setidCard]= useState("")
-  const [historyList , sethistoryList] = useState([])
+  // const [historyList , sethistoryList] = useState([])
 
   const dispatch = useDispatch();
 
   const imgBank = useSelector((state) => state.Bank.ImgBank);
   const { list } = useSelector((state) => state.card);
-  // const {historyList} = useSelector((state => state.card.historyList))
+  const {historyList} = useSelector((state => state.card.historyList))
 
   
 
