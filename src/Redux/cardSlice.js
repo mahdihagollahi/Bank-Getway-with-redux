@@ -5,19 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     list : [],
     historyList : [],
-    selectedCard : {},
-   nameCard : '',
-   numberCard : '',
-   yearCard : '',
-   monthCard : '',
-   cardCash : '',
-   idCard : '',
-
-
-cvv2Card: '',
-
-passwordCart: '',
-
+    selectedCard: null,
 }
 
 
@@ -33,9 +21,11 @@ const cardSlice = createSlice({
             })
         },
 
-        setCardDetails : (state , action ) => {
-            return{...state , ...action.payload}
-        },
+       
+
+        setCardDetails: (state, action) => {
+            state.selectedCard = action.payload;
+          },
 
        negetiveInventory : (state , action) => {
         const {negetivePrice , id} = action.payload
@@ -54,7 +44,9 @@ const cardSlice = createSlice({
          }
         
             
-       }
+       },
+
+       
        
 
        },

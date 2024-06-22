@@ -1,31 +1,33 @@
-import React, { useState } from "react";
+import React,{useState} from "react";
 import { IoCard } from "react-icons/io5";
 import { FaRegEdit } from "react-icons/fa";
 import { useContext } from "react";
 import { ProfileContext } from "../Componnent/EveryThing";
+import { useSelector } from 'react-redux';
+
+
 
 
 export default function Card() {
 
-  const {cartCash,setcartCash ,nameCard,
-    setnameCard,
-    setnumberCard,
-    numberCard,
-    cvv2Card,
-    setCvv2Card,
-    yearCard,
-    monthCard,
-    setmonthCard,
-    passwordCard,
-    setpasswordCard,
-    setyearCard, 
-    handelNegetive,
-    bankImage,
+  const selectedCard = useSelector((state) => state.card.selectedCard);
+
+  if (!selectedCard) {
+    return <div>Please select a card to see the details</div>;
+  }
+
+  const {
     imgBank,
+    handelNegetive,
     } = useContext(ProfileContext)
 
 
+   
 
+  
+  const [cartCash, setcartCash] = useState(null);
+  
+   
 
   
 
@@ -38,16 +40,7 @@ export default function Card() {
   };
   
 
-  const [inputValue, setInputValue] = useState("");
-
-  const handleChange = (event) => {
-    const inputValue = event.target.value;
-    const formattedValue = inputValue
-      .replace(/\s/g, "")
-      .replace(/(.{4})/g, "$1 ");
-    setInputValue(formattedValue);
-  };
-
+  
 
   return (
     <div className="container">
@@ -78,14 +71,17 @@ export default function Card() {
 
         <form>
           <div className="my-5 -ml-[60px]">
+
+            
             <input
               style={{ color: "black" }}
-              value={numberCard}
-              onChange={(e) =>{
-                bankImage(e);
-                setnumberCard(e.target.value)}
+              value={selectedCard.number}
+              // onChange={(e) =>{
+              //   bankImage(e);
+              //   setnumberCard(e.target.value)
+              // }
                
-              }
+              // }
               className=" text-black bg-gray-100 text-center mr-[170px]
                border border-gray-100  text-sm rounded-lg focus:ring-blue-500
                 focus:border-blue-500 ml-[100px] block w-[81%] p-2.5 
@@ -96,6 +92,7 @@ export default function Card() {
               required
               disabled
             />
+          
               {imgBank && (
                 <img className="w-[5%] absolute top-[2%] left-[6%]" src={imgBank} alt="Bank Logo" />
               )}
@@ -110,10 +107,11 @@ export default function Card() {
               </p>
             </div>
             <div className="ml-20 mt-3">
+            
               <input
                 style={{ color: "black" }}
-                value={cvv2Card}
-                onChange={(e) => setCvv2Card(e.target.value)}
+                value={selectedCard.cvv2}
+                // onChange={(e) => setcvv2Card(e.target.value)}
                 placeholder="5643"
                 type="password"
               
@@ -121,6 +119,7 @@ export default function Card() {
                 
                 className=" text-center text-black bg-white px-[113px] py-3  dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block"
                 />
+                
             </div>
           </div>
 
@@ -136,7 +135,7 @@ export default function Card() {
             <div className="flex gap-2 ml-28 text-black">
               <input
                 style={{ color: "black" }}
-                value={yearCard} 
+                value={selectedCard.year} 
                 onChange={(e) => setyearCard(e.target.value)}
                 placeholder="Y"
                 type="text"
@@ -146,7 +145,7 @@ export default function Card() {
               <span className="mt-2 text-bold ">/</span>
               <input
                 style={{ color: "black" }}
-                value={monthCard}
+                value={selectedCard.month}
                 onChange={(e) => setmonthCard(e.target.value)}
                 placeholder="M"
                 type="text"
@@ -167,7 +166,7 @@ export default function Card() {
             <div className="flex gap-2 ml-[113px]">
               <input
                 style={{ color: "black" }}
-                value={passwordCard}
+                value={selectedCard.password}
                 disabled
                 onChange={(e) => setpasswordCard(e.target.value)}
                 placeholder="xxxx"
@@ -185,7 +184,7 @@ export default function Card() {
               <input
                 style={{ color: "black" }}
                 placeholder="Mahdi"
-                value={nameCard}
+                value={selectedCard.name}
                 disabled
                 onChange={(e) => setnameCard(e.target.value)}
                 type="text"

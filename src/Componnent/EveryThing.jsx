@@ -7,20 +7,14 @@ import InputCard from "./AddCart";
 import Card from "./Card";
 import Navbar from "./Navbar";
 import { setImageCart, resetImageBank } from "../Redux/bankSlice";
-import { negetiveInventory } from '../Redux/cardSlice';
+import { negetiveInventory , setCardDetails } from '../Redux/cardSlice';
 
 export const ProfileContext = createContext();
 
 function EveryThing() {
-  const [nameCard, setnameCard] = useState("");
-  const [numberCard, setnumberCard] = useState("");
-  const [cvv2Card, setcvv2Card] = useState("");
-  const [yearCard, setyearCard] = useState("");
-  const [monthCard, setmonthCard] = useState("");
-  const [passwordCard, setpasswordCard] = useState("");
-  const [cartCash, setcartCash] = useState(null);
+  
   const [idCard , setidCard]= useState("")
-  // const [historyList , sethistoryList] = useState([])
+ 
 
   const dispatch = useDispatch();
 
@@ -28,33 +22,15 @@ function EveryThing() {
   const { list } = useSelector((state) => state.card);
   const {historyList} = useSelector((state => state.card.historyList))
 
-  
+  const SelectCard = (card) => {
+    dispatch(setCardDetails(card));
+  };
 
-
-
-  const SelectCard = (event) => {
-    const foundedCard =list.map((card)=>{
-      return card.id === event.id;
-    })
-    console.log(foundedCard)
-
-    if(foundedCard){
-      setnumberCard(event.number),
-      setcvv2Card(event.cvv2),
-      setpasswordCard(event.password),
-      setnameCard(event.name),
-      setmonthCard(event.month),
-      setyearCard(event.year)
-      setidCard(event.id)
-    }
-
-  }
 
   const handelNegetive = (negetivePrice , id) => {
     dispatch(negetiveInventory({negetivePrice , id}))
   }
  
-
   const bankImage = (e) => {
     const value = e.target.value.slice(0, 4);
     console.log("Bank code:", value);
@@ -209,43 +185,6 @@ function EveryThing() {
   return (
     <ProfileContext.Provider
       value={{
-        // setname,
-        // number,
-        // setnumber,
-        // cvv2,
-        // setcvv2,
-        // year,
-        // setyear,
-        // month,
-        // setmonth,
-        // password,
-        // setpassword,
-        // inventory,
-        // setinventory,
-        // list,
-        // setlist,
-        idCard,
-        setidCard,
-        nameCard,
-        setnameCard,
-        numberCard,
-        setnumberCard,
-        cvv2Card,
-        setcvv2Card,
-        yearCard,
-        setyearCard,
-        monthCard,
-        setmonthCard,
-        passwordCard,
-        setpasswordCard,
-        cartCash,
-        setcartCash,
-        // negetiveInventory,
-        // historyList,
-        // sethistoryList,
-        // SelectCard,
-        // AddCard,
-        // negetiveInventory,
         handelNegetive,
         bankImage,
         imgBank,
