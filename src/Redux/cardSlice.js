@@ -6,6 +6,7 @@ const initialState = {
     list : [],
     historyList : [],
     selectedCard: null,
+    
 }
 
 

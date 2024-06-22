@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, {  createContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Transaction from "../Screen/Transaction";
@@ -13,7 +13,7 @@ export const ProfileContext = createContext();
 
 function EveryThing() {
   
-  const [idCard , setidCard]= useState("")
+  
  
 
   const dispatch = useDispatch();
@@ -24,6 +24,7 @@ function EveryThing() {
 
   const SelectCard = (card) => {
     dispatch(setCardDetails(card));
+    console.log(SelectCard)
   };
 
 
@@ -233,3 +234,4 @@ function EveryThing() {
 }
 
 export default EveryThing;
+Mak77188185eeN
